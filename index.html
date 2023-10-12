@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <!--Create a head that has a title for the page, as well as links to the correct CSS file for styling-->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="assets/stylesheet.css">
+        <title>Reactive Quiz</title>
+    </head>
+    <!--Create the body of the webpage to be seen by the user. Include a top bar for navigation and information purposes-->
+    <body>
+        <header>
+            <div id="highScore">
+                <p>Leader Board</p>
+            </div>
+            <div id="timer">
+                <p>Time:</p>
+                <p id="currentTime">100</p>
+            </div>
+        </header>
+        <section id="welcomePage">
+            <h2>Welcome to the reactive practice quiz!</h2>
+            <p>Are you ready to prep? Click the button below to start the quiz. 
+                The button will start the timer and you need to select the correct answer for each question as quickly as you can.
+                Each correct answer will add to your score. 
+                If you score high enough, you can make it to the leader board.
+                Good luck!
+            </p>
+            <button id="startButton">Start Quiz</button>
+        </section>
+        <section id="questionBox">
+            <p id="question">Here is the question</p>
+            <ul id="responses">
+                <li id="a1">Answer 1</li>
+                <li id="a2">Answer 2</li>
+                <li id="a3">Answer 3</li>
+                <li id="a4">Answer 4</li>
+            </ul>
+            <button id="submitButton">Submit </button>
+        </section>
+        <section id="highScore">
+            <ul>
+                <li id="l1">Leader 1</li>
+                <li id="l2">Leader 2</li>
+                <li id="l3">Leader 3</li>
+                <li id="l4">Leader 4</li>
+                <li id="l5">Leader 5</li>
+            </ul>
+            <button id="backToQuiz">Return to Quiz </button>
+        </section>
+        <footer>
+            <p>Copyright Alex Messina</p>
+        </footer>
+    </body>
+</html>
