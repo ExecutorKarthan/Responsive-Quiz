@@ -8,8 +8,9 @@
     </head>
     <!--Create the body of the webpage to be seen by the user. Include a top bar for navigation and information purposes-->
     <body>
+        <!--Create a header that contains navigation-like elements. One to access the high score board and one to display the timer-->
         <header>
-            <div id="highScore">
+            <div id="leaderLink">
                 <p>Leader Board</p>
             </div>
             <div id="timer">
@@ -17,6 +18,7 @@
                 <p id="currentTime">100</p>
             </div>
         </header>
+        <!--Create a welcome page that can be hidden during game play or while viewing the high score -->
         <section id="welcomePage">
             <h2>Welcome to the reactive practice quiz!</h2>
             <p>Are you ready to prep? Click the button below to start the quiz. 
@@ -27,6 +29,7 @@
             </p>
             <button id="startButton">Start Quiz</button>
         </section>
+        <!--Create a question box that can be hidden by the welcome page or while viewing the high score -->
         <section id="questionBox">
             <p id="question">Here is the question</p>
             <ul id="responses">
@@ -37,7 +40,9 @@
             </ul>
             <button id="submitButton">Submit </button>
         </section>
+        <!--Create a high score box that can be hidden by the welcome page or while viewing the high score -->
         <section id="highScore">
+            <p id="topScores">Top Scores</p>
             <ul>
                 <li id="l1">Leader 1</li>
                 <li id="l2">Leader 2</li>

@@ -5,3 +5,81 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 10px;
 }
+
+header{
+  display: flex;
+  margin: 1%;
+  padding: 1%;
+  width: 100%;
+}
+
+#leaderLink{
+    width: 90%;
+    padding: 2%;
+}
+
+#timer{
+    display: flex;
+    padding-right: 10%;
+    padding-left: 1%;
+    margin: auto;
+}
+
+#timer p, #currentTime{
+    margin: 5%
+}
+
+p{
+    font-size: 40px;
+}
+
+#welcomePage{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3%;
+}
+
+h2{
+    font-size: 50px;
+    margin: auto;
+    text-align: center;
+    margin: 3%;
+    width: 100%;
+}
+
+#welcomePage p{
+    font-size: 25px;
+    margin: 3%;
+}
+
+#startButton, #submitButton, #backToQuiz{
+    margin: 3%;
+    border: 2%;
+    position: relative;
+    font-size: 30px;
+    width:max-content;
+    text-align: center;
+    margin: auto;
+}
+
+#questionBox, #highScore{
+    display: flex;
+    display: grid;
+    margin: 3%;
+    width: 100%;
+}
+
+#question, #topScores, footer{
+    text-align: center;
+    font-size: 50px;
+}
+
+#responses li, #highScore li{
+    font-size: 35px;
+    padding: 2%;
+    list-style-type: none;
+}
+
+#questionBox, #highScore{
+    display: none;
+}
