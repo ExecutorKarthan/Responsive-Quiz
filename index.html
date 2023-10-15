@@ -11,11 +11,11 @@
         <!--Create a header that contains navigation-like elements. One to access the high score board and one to display the timer-->
         <header>
             <div id="leaderLink">
-                <p>Leader Board</p>
+                <p id="leadText">Leader Board</p>
             </div>
             <div id="timer">
                 <p>Time:</p>
-                <p id="currentTime">100</p>
+                <p id="startTime">100</p>
             </div>
         </header>
         <!--Create a welcome page that can be hidden during game play or while viewing the high score -->
@@ -27,7 +27,7 @@
                 If you score high enough, you can make it to the leader board.
                 Good luck!
             </p>
-            <button id="startButton">Start Quiz</button>
+            <button id="startButton" onclick="startGame()">Start Quiz</button>
         </section>
         <!--Create a question box that can be hidden by the welcome page or while viewing the high score -->
         <section id="questionBox">
@@ -38,7 +38,7 @@
                 <li id="a3">Answer 3</li>
                 <li id="a4">Answer 4</li>
             </ul>
-            <button id="submitButton">Submit </button>
+            <button id="submitButton" onclick="enterAnswer()";>Submit </button>
         </section>
         <!--Create a high score box that can be hidden by the welcome page or while viewing the high score -->
         <section id="highScore">
@@ -50,10 +50,11 @@
                 <li id="l4">Leader 4</li>
                 <li id="l5">Leader 5</li>
             </ul>
-            <button id="backToQuiz">Return to Quiz </button>
+            <button id="backToQuiz" onclick="startGame();">Return to Quiz </button>
         </section>
         <footer>
             <p>Copyright Alex Messina</p>
         </footer>
+        <script type="text/javascript" src="./assets/script.js"></script>
     </body>
 </html>
