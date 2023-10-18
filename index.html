@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="assets/stylesheet.css">
+        
         <title>Reactive Quiz</title>
     </head>
     <!--Create the body of the webpage to be seen by the user. Include a top bar for navigation and information purposes-->
@@ -27,7 +28,7 @@
                 If you score high enough, you can make it to the leader board.
                 Good luck!
             </p>
-            <button id="startButton" onclick="startGame()">Start Quiz</button>
+            <button id="startButton" onclick="runGame()">Start Quiz</button>
         </section>
         <!--Create a question box that can be hidden by the welcome page or while viewing the high score -->
         <section id="questionBox">
@@ -50,7 +51,7 @@
                 <li id="l4">Leader 4</li>
                 <li id="l5">Leader 5</li>
             </ul>
-            <button id="backToQuiz" onclick="startGame();">Return to Quiz </button>
+            <button id="backToQuiz" onclick="runGame();">Return to Quiz </button>
         </section>
         <footer>
             <p>Copyright Alex Messina</p>

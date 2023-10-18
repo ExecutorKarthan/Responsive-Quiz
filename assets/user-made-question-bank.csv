@@ -1,0 +1,6 @@
+"Question	Right answer	other response	other response	other response",,,,
+"Which of the following will call the 3rd item of an array?	array[2]	array[3]	array.get(3rdPlace)	array.pop()",,,,
+A for loop is composed of…,all of these are true,a variable declaration,a conditional to continue to run,an incrementer
+If statements execute code,when their conditions evaluate as true,when their conditions evaluate as false,under all conditions,when conditions change from false to true
+"Athe variable ""age"" is best represented by",an int,a float,a string,an array
+Functions can be created,"by declaring the ""function"" keyword","by using ""def_functionName""",only in classes in Javascript,None of these are true
