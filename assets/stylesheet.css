@@ -52,7 +52,7 @@ h2{
     margin: 3%;
 }
 
-#startButton, #submitButton, #backToQuiz{
+#startButton, #backToQuiz{
     margin: 3%;
     border: 2%;
     position: relative;
@@ -69,9 +69,10 @@ h2{
     width: 100%;
 }
 
-#question, #topScores, footer{
+#question, #topScores, footer, #resultText{
     text-align: center;
     font-size: 50px;
+    padding-right: 7%;
 }
 
 #responses li, #highScore li{

@@ -1,5 +1,4 @@
 function changeBox(visibleBox){
-    event.stopPropagation()
     var welcomePage = document.querySelector("#welcomePage");
     var questionBox = document.querySelector("#questionBox");
     var highScore = document.querySelector("#highScore");
@@ -49,11 +48,28 @@ function formateQuestion(questionArray){
     var responseLocations = document.getElementById("responses").children;
     for(var i = 0; i < selectedQuestion.options.length; i++){
         responseLocations[i].textContent = String(i+1) + ")  " + selectedQuestion.options[i];
+        if(selectedQuestion.options[i] == selectedQuestion.correctAnswer){
+            responseLocations[i].setAttribute('name', 'correct');
+        }
+        else{
+            responseLocations[i].setAttribute('name', 'incorrect');
+        }
     }
 }
 
-function enterAnswer(){
-
+function answerVerification(){
+    if(this.getAttribute('name') == 'correct'){
+        var resultText = document.querySelector("#resultText");
+        resultText.textContent = "Correct!";
+        resultText.style.color = 'green';
+        score +=10
+    }
+    else{
+        var resultText = document.querySelector("#resultText");
+        resultText.textContent = "Incorrect.";
+        resultText.style.color = 'red';
+    }
+    formateQuestion(questionArray);
 }
 
 function runGame(){
@@ -62,11 +78,23 @@ function runGame(){
     var timerInterval = setInterval(function() {
     timeVal--;
     timeText.textContent = timeVal;
-    enterAnswer();
+    document.getElementById('a1').onclick = answerVerification;
+    document.getElementById('a2').onclick = answerVerification;
+    document.getElementById('a3').onclick = answerVerification;
+    document.getElementById('a4').onclick = answerVerification;
     if(timeVal == 0){
-        clearInterval(timerInterval)
+        clearInterval(timerInterval);
+        updateLeaderBoard();
+        changeBox("leaderLink");
     }
     }, 1000)
+}
+
+function updateLeaderBoard(){
+    //Display score enter initials then go to leaderboard
+    score = 0;
+    timeVal = 100
+    timeText.textContent = timeVal;
 }
 
 var questionDatabase = {
@@ -108,11 +136,12 @@ var questionDatabase = {
 }
 var questionArray = [];
 prepQuestions(questionArray);
-var leaderText = document.querySelector("#leaderLink")
-var timeText = document.querySelector("#startTime")
-var timeVal = document.querySelector("#startTime").innerHTML
+var leaderText = document.querySelector("#leaderLink");
+var timeText = document.querySelector("#startTime");
+var questionBox = document.querySelector("#questionBox");
+var timeVal = document.querySelector("#startTime").innerHTML;
+var score = 0;
 leaderText.addEventListener("click", function(){
     var itemClicked = leaderText.getAttribute("id")
-    console.log(itemClicked)
     changeBox(itemClicked);
 });
