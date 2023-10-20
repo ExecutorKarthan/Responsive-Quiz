@@ -34,8 +34,6 @@ p{
 }
 
 #welcomePage{
-    display: flex;
-    flex-wrap: wrap;
     margin: 3%;
 }
 
@@ -52,7 +50,7 @@ h2{
     margin: 3%;
 }
 
-#startButton, #backToQuiz{
+#startButton{
     margin: 3%;
     border: 2%;
     position: relative;
@@ -62,25 +60,57 @@ h2{
     margin: auto;
 }
 
+
 #questionBox, #highScore{
-    display: flex;
-    display: grid;
     margin: 3%;
     width: 100%;
 }
 
-#question, #topScores, footer, #resultText{
+#buttonOptions{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    margin: 3%;
+    border: 3%;
+    justify-content: center;
+}
+
+#backToQuiz, #clearLeaderBoard, #submit{
+    margin: 3%;
+    padding: 1%;
+    font-size: 30px;
+    width:max-content;
+}
+
+#question, #topScores, #resultText, #quizCompleted{
     text-align: center;
     font-size: 50px;
     padding-right: 7%;
 }
 
-#responses li, #highScore li{
+#responses li{
     font-size: 35px;
     padding: 2%;
     list-style-type: none;
 }
 
+#enterHighScore{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   box-sizing: border-box;
+}
+
+.submitButton{
+    font-size: 30px;
+}
+
 #questionBox, #highScore{
     display: none;
+}
+
+footer{
+    text-align: center;
+    font-size: 50px;
+    padding-right: auto;
 }

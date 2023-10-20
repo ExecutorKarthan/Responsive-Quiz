@@ -43,15 +43,21 @@
         </section>
         <!--Create a high score box that can be hidden by the welcome page or while viewing the high score -->
         <section id="highScore">
-            <p id="topScores">Top Scores</p>
-            <ul>
-                <li id="l1">Leader 1</li>
-                <li id="l2">Leader 2</li>
-                <li id="l3">Leader 3</li>
-                <li id="l4">Leader 4</li>
-                <li id="l5">Leader 5</li>
-            </ul>
-            <button id="backToQuiz" onclick="runGame();">Return to Quiz </button>
+            <ul id="topScores">Top Scores</ul>
+            <div id="buttonOptions">
+                <button id="backToQuiz" onclick="runGame();">Return to Quiz </button>
+                <button id="clearLeaderBoard" onclick="clearBoard();">Clear the Leaderboard </button>
+            </div>
+        </section>
+        <section id="quizCompleted">
+            <h2 id="finishedQuz">All done!</h2>
+            <p>Final Score</p>
+            <form id="enterHighScore"> 
+                <label for="userName">Enter Name or Initials</label>
+                <input type="text" id="userName" value="Enter your name or initials here!">
+                <br>
+                <button id="submit" onclick="saveLeader();">Save</button>
+            </form>
         </section>
         <footer>
             <p>Copyright Alex Messina</p>

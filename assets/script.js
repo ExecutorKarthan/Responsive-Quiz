@@ -91,6 +91,8 @@ function runGame(){
 }
 
 function updateLeaderBoard(){
+    var topScores = document.getElementById("topScores").children
+    
     //Display score enter initials then go to leaderboard
     score = 0;
     timeVal = 100
