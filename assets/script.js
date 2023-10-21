@@ -229,5 +229,38 @@ var score = 0;
 //Add an event listener so the user can gain click-access to the leader board
 leaderText.addEventListener("click", function(event){
     event.preventDefault(event);
+    var localStorageValues = localStorage.getItem("leaderArray");
+    //Check to see if there is a current stored leader board. If not, update the leader board
+    if (localStorageValues != null){
+        //Clear the board in the event of a 2 time click
+        var leadersOnBoard = document.querySelector("#topScores").children
+        while (leadersOnBoard.length > 0){
+            for (var item of leadersOnBoard){
+                item.remove();
+            }
+        }
+        //Retrieve leader data and update the array with that data
+        leaderArray = []
+        var tempArray = localStorageValues.split(",");
+        while(tempArray.length > 0){
+            var tempName = tempArray.pop()
+            var tempScore = parseInt(tempArray.pop())
+            leaderArray.push([tempScore, tempName])
+        }
+        //Arrange the leader board members from highest score to lowest
+        if (leaderArray.length > 1){
+            //This code was researched and copied from: https://stackoverflow.com/questions/50415200/sort-an-array-of-arrays-in-javascript
+            leaderArray.sort(function(a, b){
+                return b[0] - a[0];
+            })
+            //Create new elements with the leader board data
+            leaderArray.forEach(score =>{
+            var scoreItem = document.createElement("li");
+            scoreItem.textContent = score[1] + ": " + score[0];
+            scoreItem.setAttribute("class", "leaders")
+            document.querySelector("#topScores").appendChild(scoreItem)
+            })
+        }
+    }
     changeBox(leaderText);
 });
