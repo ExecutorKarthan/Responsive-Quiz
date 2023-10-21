@@ -49,24 +49,34 @@ h2{
 }
 
 #welcomePage p{
+    display: block;
+    width: 100%;
     font-size: 25px;
-    margin: 3%;
+    margin: 7%;
 }
 
 #startButton{
-    margin: 3%;
+    margin: 37%;
     border: 2%;
     position: relative;
     font-size: 30px;
     width:max-content;
     text-align: center;
+    justify-content: center;
     margin: auto;
 }
 
 
 #questionBox, #highScore{
-    margin: 3%;
-    width: 100%;
+    margin: auto;
+    width: 100%;    
+}
+
+
+#responses li, .leaders{
+    font-size: 35px;
+    padding: 2%;
+    list-style-type: none;
 }
 
 #buttonOptions{
@@ -88,34 +98,22 @@ h2{
 #question, #topScores, #resultText, #quizCompleted{
     text-align: center;
     font-size: 50px;
-    padding-right: 7%;
 }
-
-#responses li{
-    font-size: 35px;
-    padding: 2%;
-    list-style-type: none;
-}
-
-#enterHighScore{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-    width: fit-content;
- }
 
 #quizCompleted{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center; 
+    justify-content: center;
     width: 100%;
-    padding: 2%;
+    padding-right: 15%;
 }
 
 #enterHighScore{
     display: block;
+    box-sizing: border-box;
+    width: fit-content;
 }
 
 .submitButton{
@@ -127,12 +125,14 @@ h2{
     
 }
 
-#questionBox, #highScore{
+#questionBox, #highScore, #quizCompleted{
     display: none;
 }
 
-footer{
+footer p{
+    display: flex;
     text-align: center;
-    font-size: 50px;
-    padding-right: auto;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
 }

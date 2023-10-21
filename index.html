@@ -15,7 +15,7 @@
             </div>
             <div id="timer">
                 <p>Time:</p>
-                <p id="startTime">100</p>
+                <p id="startTime">5</p>
             </div>
         </header>
         <!--Create a welcome page that can be hidden during game play or while viewing the high score -->
@@ -39,24 +39,24 @@
                 <li id="a4">Answer 4</li>
             </ul>
             <hr>
-            <p id="resultText">If you were right or wrong will pop up</p>
+            <p id="resultText">If you were right or wrong will pop up here</p>
         </section>
         <!--Create a high score box that can be hidden by the welcome page or while viewing the high score -->
         <section id="highScore">
             <ul id="topScores">Top Scores</ul>
             <div id="buttonOptions">
-                <button id="backToQuiz" onclick="runGame();">Return to Quiz </button>
-                <button id="clearLeaderBoard" onclick="clearBoard();">Clear the Leaderboard </button>
+                <button id="backToQuiz" onclick="runGame(event);">Return to Quiz </button>
+                <button id="clearLeaderBoard" onclick="clearBoard(event);">Clear the Leaderboard </button>
             </div>
         </section>
         <section id="quizCompleted">
             <h2 id="finishedQuz">All done!</h2>
-            <p>Final Score: </p>
+            <p id="finalScoreVal"></p>
             <form id="enterHighScore"> 
-                <label class="submitButton" for="userName">Enter Name or Initials:</label>
-                <input class="submitButton" type="text" id="userName" value="Enter your name or initials here!">
+                <label class="submitButton" for="userName">Name:</label>
+                <input class="submitButton" type="text" id="userName">
                 <br>
-                <button id="submit" onclick="saveLeader();">Save</button>
+                <button id="submit" onclick="saveLeader(event);">Save</button>
             </form>
         </section>
         <footer>

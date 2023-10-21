@@ -1,19 +1,21 @@
 function changeBox(visibleBox){
-    var welcomePage = document.querySelector("#welcomePage");
-    var questionBox = document.querySelector("#questionBox");
-    var highScore = document.querySelector("#highScore");
+    var visibleBox = visibleBox.getAttribute("id")
     welcomePage.style.display="None";
     questionBox.style.display="None";
     highScore.style.display="None";    
-    if(visibleBox == "#welcomePage"){
-        welcomePage.style.display="Block";  
+    quizCompleted.style.display="None";    
+    if(visibleBox == "welcomePage"){
+        welcomePage.style.display="flex";  
     }
-    if(visibleBox == "#questionBox"){
-        questionBox.style.display="Block";
+    if(visibleBox == "questionBox"){
+        questionBox.style.display="block";
     }
     if(visibleBox == "leaderLink"){
-        highScore.style.display="Block";  
-    }    
+        highScore.style.display="block";  
+    }
+    if(visibleBox == "quizCompleted"){
+        quizCompleted.style.display="flex";    
+    }
 }
 
 function prepQuestions(questionArray){
@@ -45,7 +47,7 @@ function shuffleAnswers(options){
 function formateQuestion(questionArray){
     var selectedQuestion = questionArray[Math.floor(Math.random()*questionArray.length)]
     document.querySelector("#question").textContent = selectedQuestion.question;
-    var responseLocations = document.getElementById("responses").children;
+    var responseLocations = document.querySelector("#responses").children;
     for(var i = 0; i < selectedQuestion.options.length; i++){
         responseLocations[i].textContent = String(i+1) + ")  " + selectedQuestion.options[i];
         if(selectedQuestion.options[i] == selectedQuestion.correctAnswer){
@@ -73,7 +75,7 @@ function answerVerification(){
 }
 
 function runGame(){
-    changeBox("#questionBox");
+    changeBox(questionBox);
     formateQuestion(questionArray);
     var timerInterval = setInterval(function() {
     timeVal--;
@@ -84,20 +86,77 @@ function runGame(){
     document.getElementById('a4').onclick = answerVerification;
     if(timeVal == 0){
         clearInterval(timerInterval);
-        updateLeaderBoard();
-        changeBox("leaderLink");
+        document.querySelector("#finalScoreVal").textContent = "Final Score: " + score;
+        changeBox(quizCompleted)
     }
     }, 1000)
 }
 
-function updateLeaderBoard(){
-    var topScores = document.getElementById("topScores").children
-    
-    //Display score enter initials then go to leaderboard
-    score = 0;
-    timeVal = 100
-    timeText.textContent = timeVal;
+function saveLeader(event){
+    event.preventDefault();
+    var currentValues = [score, document.getElementById("userName").value]
+    processResults(currentValues);
 }
+
+function processResults(currentValues){
+    var leaderArray = []
+    var localStorageValues = localStorage.getItem("leaderArray");
+    if (localStorageValues == null){
+        leaderArray.push(currentValues)
+    }
+    else{
+        var tempArray = localStorageValues.split(",");
+        while(tempArray.length > 0){
+            var tempName = tempArray.pop()
+            var tempScore = parseInt(tempArray.pop())
+            leaderArray.push([tempScore, tempName])
+        }
+        leaderArray.push(currentValues);
+    }
+    if (leaderArray.length > 1){
+        //This code was researched and copied from: https://stackoverflow.com/questions/50415200/sort-an-array-of-arrays-in-javascript
+        leaderArray.sort(function(a, b){
+            return b[0] - a[0];
+        })
+        //Original code begins again here
+    }
+    while (leaderArray.length > 5){
+        leaderArray.pop()
+    }
+
+    var leadersOnBoard = document.querySelector("#topScores").children
+
+    while (leadersOnBoard.length > 0){
+        for (var item of leadersOnBoard){
+            item.remove();
+        }
+    }
+    leaderArray.forEach(score =>{
+        var scoreItem = document.createElement("li");
+        scoreItem.textContent = score[1] + ": " + score[0];
+        scoreItem.setAttribute("class", "leaders")
+        document.querySelector("#topScores").appendChild(scoreItem)
+    })
+    localStorage.setItem("leaderArray", leaderArray)    
+    score = 0;
+    timeVal = 10;
+    timeText.textContent = timeVal;
+    document.querySelector("#resultText").textContent = "If you were right or wrong will pop up here";
+    document.querySelector("#resultText").style.color = "black";
+    changeBox(leaderText)
+}
+
+function clearBoard(event){
+    event.preventDefault();
+    localStorage.clear();
+    var leadersOnBoard = document.querySelector("#topScores").children
+    while (leadersOnBoard.length > 0){
+        for (var item of leadersOnBoard){
+            item.remove();
+        }
+    }
+}
+
 
 var questionDatabase = {
     "1": [
@@ -140,10 +199,13 @@ var questionArray = [];
 prepQuestions(questionArray);
 var leaderText = document.querySelector("#leaderLink");
 var timeText = document.querySelector("#startTime");
+var welcomePage = document.querySelector("#welcomePage");
 var questionBox = document.querySelector("#questionBox");
+var highScore = document.querySelector("#highScore");
+var quizCompleted = document.querySelector("#quizCompleted");
 var timeVal = document.querySelector("#startTime").innerHTML;
 var score = 0;
-leaderText.addEventListener("click", function(){
-    var itemClicked = leaderText.getAttribute("id")
-    changeBox(itemClicked);
+leaderText.addEventListener("click", function(event){
+    event.preventDefault(event);
+    changeBox(leaderText);
 });
