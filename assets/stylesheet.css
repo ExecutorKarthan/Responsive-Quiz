@@ -5,14 +5,14 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 10px;
 }
-
+/*Provide default values for the header*/
 header{
   display: flex;
   margin: 1%;
   padding: 1%;
   width: 100%;
 }
-
+/*Style the linked used to get to the leader board, as well as the timer*/
 #leaderLink{
     width: 90%;
     padding: 2%;
@@ -32,7 +32,7 @@ header{
 p{
     font-size: 40px;
 }
-
+/*Provide a style framework for the different screens that are similar in structure*/
 #welcomePage, #quizCompleted, #enterHighScore{
     display: flex;
     flex-direction: column;
@@ -40,7 +40,7 @@ p{
     align-items: center;    
     margin: 5%;
 }
-
+/*Style the elements of the Welcome page*/
 h2{
     font-size: 50px;
     margin: auto;
@@ -64,7 +64,7 @@ h2{
     align-items: center;
 
 }
-
+/*Style the elements of the question page that displays questions*/
 #questionBox, #highScore{
     margin: auto;
     width: 100%;    
@@ -75,7 +75,7 @@ h2{
     padding: 2%;
     list-style-type: none;
 }
-
+/*Style the buttons of the leader board, as well as other buttons*/ 
 #buttonOptions{
     display: flex;
     flex-direction:row;
@@ -91,12 +91,12 @@ h2{
     font-size: 30px;
     width:max-content;
 }
-
-#question, #topScores, #resultText{
+/*Style title-like elements*/
+#question, #resultText, #topScores{
     text-align: center;
     font-size: 50px;
 }
-
+/*Style the form that accepts user input for the leader board*/
 #enterHighScore{
     flex-direction: column;
     margin:0%
@@ -107,11 +107,11 @@ h2{
     margin: 0.5%;
     padding: 2%;   
 }
-
+/*Set the later screen displays to 'none' so they are ignored until needed*/
 #questionBox, #highScore, #quizCompleted{
     display: none;
 }
-
+/*Style the footer*/
 footer p{
     display: block;
     text-align: center;

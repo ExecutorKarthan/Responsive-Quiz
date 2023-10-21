@@ -15,10 +15,10 @@
             </div>
             <div id="timer">
                 <p>Time:</p>
-                <p id="startTime">5</p>
+                <p id="startTime">60</p>
             </div>
         </header>
-        <!--Create a welcome page that can be hidden during game play or while viewing the high score -->
+        <!--Create a welcome page that can be hidden during game play, the high score box or while viewing the quiz completion screen -->
         <section id="welcomePage">
             <h2>Welcome to the reactive practice quiz!</h2>
             <p>Are you ready to prep? Click the button below to start the quiz. 
@@ -29,7 +29,7 @@
             </p>
             <button id="startButton" onclick="runGame()">Start Quiz</button>
         </section>
-        <!--Create a question box that can be hidden by the welcome page or while viewing the high score -->
+        <!--Create a question box that can be hidden by the welcome box, the high score box or while viewing the quiz completion screen -->
         <section id="questionBox">
             <p id="question">Here is the question</p>
             <ul id="responses">
@@ -41,17 +41,20 @@
             <hr>
             <p id="resultText">If you were right or wrong will pop up here</p>
         </section>
-        <!--Create a high score box that can be hidden by the welcome page or while viewing the high score -->
+        <!--Create a high score box that can be hidden by the welcome box, question box or while viewing the quiz completion screen -->
         <section id="highScore">
             <ul id="topScores">Top Scores</ul>
+            <!-- Create buttons to navigate away from the leader board-->
             <div id="buttonOptions">
                 <button id="backToQuiz" onclick="runGame(event);">Return to Quiz </button>
                 <button id="clearLeaderBoard" onclick="clearBoard(event);">Clear the Leaderboard </button>
             </div>
         </section>
+        <!--Create a quiz completion box that can be hidden by the welcome box, question box or while viewing the high score -->
         <section id="quizCompleted">
             <h2 id="finishedQuz">All done!</h2>
             <p id="finalScoreVal"></p>
+            <!-- Create a form to accept user names and scores to update the leader board-->>
             <form id="enterHighScore"> 
                 <label class="submitButton" for="userName">Name:</label>
                 <input class="submitButton" type="text" id="userName">
