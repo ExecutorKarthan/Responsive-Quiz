@@ -34,6 +34,9 @@ p{
 }
 
 #welcomePage{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     margin: 3%;
 }
 
@@ -95,14 +98,33 @@ h2{
 }
 
 #enterHighScore{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    width: fit-content;
+ }
+
+#quizCompleted{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    padding: 2%;
+}
+
+#enterHighScore{
+    display: block;
 }
 
 .submitButton{
+    display: flex;
+    flex-direction: row;
     font-size: 30px;
+    margin: 0.5%;
+    padding: 2%;
+    
 }
 
 #questionBox, #highScore{
