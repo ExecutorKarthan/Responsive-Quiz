@@ -82,38 +82,28 @@ function answerVerification(){
 /*Create a function to run the game. */
 function runGame(){
     var timeVal = document.querySelector("#startTime").innerHTML;
-    if(parseInt(timeVal) > 0){
-        //Changes screen for the player
-        changeBox(questionBox);
-        //Formats and loads the first question
-        formateQuestion(questionArray);
-        //Start a timer that counts down by ones
-        var timerInterval = setInterval(function() {
-            timeVal--;
-            timeText.textContent = timeVal;
-            //Listen for player responses, then verify said answer for correctness
-            document.getElementById('a1').onclick = answerVerification;
-            document.getElementById('a2').onclick = answerVerification;
-            document.getElementById('a3').onclick = answerVerification;
-            document.getElementById('a4').onclick = answerVerification;
-            if(timeVal <= 0){
-                //Clear the timer to reset it
-                clearInterval(timerInterval);
-                //Display final score
-                document.querySelector("#finalScoreVal").textContent = "Final Score: " + score;
-                //Change to the completion screen
-                changeBox(quizCompleted)
-            }
-        }, 1000)
-    }
-    else{
-        //Clear the timer to reset it
-        clearInterval(timerInterval);
-        //Display final score
-        document.querySelector("#finalScoreVal").textContent = "Final Score: " + score;
-        //Change to the completion screen
-        changeBox(quizCompleted)
-    }
+    //Changes screen for the player
+    changeBox(questionBox);
+    //Formats and loads the first question
+    formateQuestion(questionArray);
+    //Start a timer that counts down by ones
+    var timerInterval = setInterval(function() {
+        timeVal--;
+        timeText.textContent = timeVal;
+        //Listen for player responses, then verify said answer for correctness
+        document.getElementById('a1').onclick = answerVerification;
+        document.getElementById('a2').onclick = answerVerification;
+        document.getElementById('a3').onclick = answerVerification;
+        document.getElementById('a4').onclick = answerVerification;
+        if(timeVal <= 0){
+            //Clear the timer to reset it
+            clearInterval(timerInterval);
+            //Display final score
+            document.querySelector("#finalScoreVal").textContent = "Final Score: " + score;
+            //Change to the completion screen
+            changeBox(quizCompleted)
+        }
+    }, 1000)
 }
 //Create a function to take values entered into the leader form to test if they should be added to the leader board.
 function saveLeader(event){
