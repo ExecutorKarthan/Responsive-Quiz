@@ -33,12 +33,12 @@ class questionObj{
     constructor(question, correctAnswer, options){
         this. question = question;
         this. correctAnswer = correctAnswer;
-        this.options = shuffleAnswers(options)
+        this.options = shuffle(options)
     }
 }
-/*Function to randomize the order of answers displayed. This is based on the Fisher-Yates Shuffle Algorithm
+/*Function to randomize the order of values displayed. This is based on the Fisher-Yates Shuffle Algorithm
 https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle*/
-function shuffleAnswers(options){
+function shuffle(options){
     for( var i = options.length-1; i > 0; i--){
         var tempEnd = options[i]
         var swapIndex = Math.floor(Math.random()*i)
@@ -49,16 +49,21 @@ function shuffleAnswers(options){
 }
 //Create a function to take the question object and display its possible answers in question box.
 function formateQuestion(questionArray){
-    var selectedQuestion = questionArray[Math.floor(Math.random()*questionArray.length)]
-    document.querySelector("#question").textContent = selectedQuestion.question;
-    var responseLocations = document.querySelector("#responses").children;
-    for(var i = 0; i < selectedQuestion.options.length; i++){
-        responseLocations[i].textContent = String(i+1) + ")  " + selectedQuestion.options[i];
-        if(selectedQuestion.options[i] == selectedQuestion.correctAnswer){
-            responseLocations[i].setAttribute('name', 'correct');
-        }
-        else{
-            responseLocations[i].setAttribute('name', 'incorrect');
+    if(questionArray.length ==0){
+        questionArray.push(-1)
+    }
+    else{
+        var selectedQuestion = shuffle(questionArray).pop();
+        document.querySelector("#question").textContent = selectedQuestion.question;
+        var responseLocations = document.querySelector("#responses").children;
+        for(var i = 0; i < selectedQuestion.options.length; i++){
+            responseLocations[i].textContent = String(i+1) + ")  " + selectedQuestion.options[i];
+            if(selectedQuestion.options[i] == selectedQuestion.correctAnswer){
+                responseLocations[i].setAttribute('name', 'correct');
+            }
+            else{
+                responseLocations[i].setAttribute('name', 'incorrect');
+            }
         }
     }
 }
@@ -82,6 +87,16 @@ function answerVerification(){
 }
 /*Create a function to run the game. */
 function runGame(){
+    //Reset variables for use
+    questionArray = []
+    resetArray.forEach(item=>{
+        questionArray.push(item)
+    })
+    score = 0;
+    timeVal = 60;
+    timeText.textContent = timeVal;
+    document.querySelector("#resultText").textContent = "If you were right or wrong will pop up here";
+    document.querySelector("#resultText").style.color = "black";
     //Changes screen for the player
     changeBox(questionBox);
     //Formats and loads the first question
@@ -95,7 +110,7 @@ function runGame(){
         document.getElementById('a2').onclick = answerVerification;
         document.getElementById('a3').onclick = answerVerification;
         document.getElementById('a4').onclick = answerVerification;
-        if(timeVal <= 0){
+        if(timeVal <= 0 || questionArray[0] == -1){
             //Clear the timer to reset it
             clearInterval(timerInterval);
             //Display final score
@@ -161,14 +176,8 @@ function processResults(currentValues){
     })
     colorIndex = 0;
     //Update the elements in local storage
-    localStorage.setItem("leaderArray", leaderArray)    
-    //Reset variables for next use
-    score = 0;
-    timeVal = 60;
-    timeText.textContent = timeVal;
-    document.querySelector("#resultText").textContent = "If you were right or wrong will pop up here";
-    document.querySelector("#resultText").style.color = "black";
-    changeBox(leaderText)
+    localStorage.setItem("leaderArray", leaderArray)   
+    changeBox(leaderText) 
 }
 
 //Create a function to clear the leader board and its local storage
@@ -222,8 +231,11 @@ var questionDatabase = {
 }
 //Create variables for reference
 var questionArray = [];
+var resetArray = []
 //Convert the JSON data into question objects and stor them in an array
 prepQuestions(questionArray);
+questionArray.forEach(item =>
+    resetArray.push(item))
 var leaderText = document.querySelector("#leaderLink");
 var timeText = document.querySelector("#startTime");
 var welcomePage = document.querySelector("#welcomePage");
