@@ -1,5 +1,7 @@
 # Live Project
 https://executorkarthan.github.io/Responsive-Quiz/
+![Alt text](<assets/Responsive Quiz Demo.gif>)
+<video src="./assets/Responsive%20Quiz%20Demo.mp4" controls title="Title">Demo Video</video>
 
 # Description
 This is a Web API project that allows the user to answer quiz question on a timed interval. This project allowed me to experiment with the Document Object Model (DOM), specifically with calling DOM items, creating DOM elements via Javascript, and then styling said items with Javascript. I learned quite a bit about hiding components in a webpage to make it seem like there were several different webpages, as well as how Javascript is limited in is ability to import and export file data. I discovered that any file imports need to be handled with Node and that standard web browsers can really only store strings via local storage. Finally, I learned about the Fisher-Yates Shuffle Algorithm in an attempt to better randomize my questions and their corresponding answers. 
