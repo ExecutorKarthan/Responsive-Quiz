@@ -81,20 +81,32 @@ function answerVerification(){
 }
 /*Create a function to run the game. */
 function runGame(){
-    //Changes screen for the player
-    changeBox(questionBox);
-    //Formats and loads the first question
-    formateQuestion(questionArray);
-    //Start a timer that counts down by ones
-    var timerInterval = setInterval(function() {
-    timeVal--;
-    timeText.textContent = timeVal;
-    //Listen for player responses, then verify said answer for correctness
-    document.getElementById('a1').onclick = answerVerification;
-    document.getElementById('a2').onclick = answerVerification;
-    document.getElementById('a3').onclick = answerVerification;
-    document.getElementById('a4').onclick = answerVerification;
-    if(timeVal == 0){
+    var timeVal = document.querySelector("#startTime").innerHTML;
+    if(parseInt(timeVal) > 0){
+        //Changes screen for the player
+        changeBox(questionBox);
+        //Formats and loads the first question
+        formateQuestion(questionArray);
+        //Start a timer that counts down by ones
+        var timerInterval = setInterval(function() {
+            timeVal--;
+            timeText.textContent = timeVal;
+            //Listen for player responses, then verify said answer for correctness
+            document.getElementById('a1').onclick = answerVerification;
+            document.getElementById('a2').onclick = answerVerification;
+            document.getElementById('a3').onclick = answerVerification;
+            document.getElementById('a4').onclick = answerVerification;
+            if(timeVal <= 0){
+                //Clear the timer to reset it
+                clearInterval(timerInterval);
+                //Display final score
+                document.querySelector("#finalScoreVal").textContent = "Final Score: " + score;
+                //Change to the completion screen
+                changeBox(quizCompleted)
+            }
+        }, 1000)
+    }
+    else{
         //Clear the timer to reset it
         clearInterval(timerInterval);
         //Display final score
@@ -102,7 +114,6 @@ function runGame(){
         //Change to the completion screen
         changeBox(quizCompleted)
     }
-    }, 1000)
 }
 //Create a function to take values entered into the leader form to test if they should be added to the leader board.
 function saveLeader(event){
@@ -148,12 +159,17 @@ function processResults(currentValues){
         }
     }
     //Create new elements with the leader board data
+    colorArray = ["Gold", "Silver", "#CD7f32", "#6A3805", "#AD8A56"];
+    colorIndex = 0;
     leaderArray.forEach(score =>{
-        var scoreItem = document.createElement("li");
-        scoreItem.textContent = score[1] + ": " + score[0];
-        scoreItem.setAttribute("class", "leaders")
-        document.querySelector("#topScores").appendChild(scoreItem)
+    var scoreItem = document.createElement("li");
+    scoreItem.textContent = score[1] + ": " + score[0];
+    scoreItem.setAttribute("class", "leaders")
+    scoreItem.style.backgroundColor = colorArray[colorIndex];
+    document.querySelector("#topScores").appendChild(scoreItem)
+    colorIndex+=1
     })
+    colorIndex = 0;
     //Update the elements in local storage
     localStorage.setItem("leaderArray", leaderArray)    
     //Reset variables for next use
@@ -254,12 +270,17 @@ leaderText.addEventListener("click", function(event){
                 return b[0] - a[0];
             })
             //Create new elements with the leader board data
+            colorArray = ["Gold", "Silver", "#CD7f32", "#6A3805", "#AD8A56"];
+            colorIndex = 0;
             leaderArray.forEach(score =>{
             var scoreItem = document.createElement("li");
             scoreItem.textContent = score[1] + ": " + score[0];
             scoreItem.setAttribute("class", "leaders")
+            scoreItem.style.backgroundColor = colorArray[colorIndex];
             document.querySelector("#topScores").appendChild(scoreItem)
+            colorIndex+=1
             })
+            colorIndex = 0;
         }
     }
     changeBox(leaderText);
