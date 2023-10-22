@@ -64,7 +64,7 @@ function formateQuestion(questionArray){
 }
 //Create a function to check if the selected answer is indeed correct or not
 function answerVerification(){
-    //Compare to see if the answer is correct. If so, update the score. Regardless of correctness, style the text.
+    //Compare to see if the answer is correct. If so, update the score. If not, subtract time. Regardless of correctness, style the text.
     if(this.getAttribute('name') == 'correct'){
         var resultText = document.querySelector("#resultText");
         resultText.textContent = "Correct!";
@@ -75,13 +75,13 @@ function answerVerification(){
         var resultText = document.querySelector("#resultText");
         resultText.textContent = "Incorrect.";
         resultText.style.color = 'red';
+        timeVal = timeVal - 10;
     }
     //Load the next question
     formateQuestion(questionArray);
 }
 /*Create a function to run the game. */
 function runGame(){
-    var timeVal = document.querySelector("#startTime").innerHTML;
     //Changes screen for the player
     changeBox(questionBox);
     //Formats and loads the first question
@@ -231,6 +231,7 @@ var questionBox = document.querySelector("#questionBox");
 var highScore = document.querySelector("#highScore");
 var quizCompleted = document.querySelector("#quizCompleted");
 var timeVal = document.querySelector("#startTime").innerHTML;
+var timeVal = parseInt(timeVal)
 var score = 0;
 //Add an event listener so the user can gain click-access to the leader board
 leaderText.addEventListener("click", function(event){
